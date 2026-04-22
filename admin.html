@@ -2,171 +2,99 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Yönetim Paneli | Doğa Temizlik</title>
+    <title>Yönetim | Doğa Temizlik</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; }</style>
+    <style>body { background: #0f172a; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
-<body class="min-h-screen p-4 md:p-12">
-
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+<body class="p-4 md:p-10 min-h-screen">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         
-        <!-- Ürün Ekleme -->
-        <div class="lg:col-span-1 bg-white rounded-[3rem] p-10 shadow-2xl h-fit border border-slate-100">
-            <h2 class="text-2xl font-black text-slate-800 mb-8 flex items-center gap-3">
-                <i class="fa-solid fa-circle-plus text-green-600"></i> Yeni Ürün Tanımla
-            </h2>
-            
-            <form id="productForm" class="space-y-6">
-                <div>
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block font-semibold">Ürün İsmi</label>
-                    <input type="text" id="name" required class="w-full bg-slate-50 border-2 border-slate-50 rounded-2xl p-4 outline-none focus:border-green-500 focus:bg-white transition font-bold text-slate-700">
-                </div>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block font-semibold">Fiyat (TL)</label>
-                        <input type="number" id="price" required class="w-full bg-slate-50 border-2 border-slate-50 rounded-2xl p-4 outline-none focus:border-green-500 transition font-black text-slate-700">
-                    </div>
-                    <div>
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block font-semibold">Görsel</label>
-                        <input type="file" id="image" accept="image/*" required class="hidden">
-                        <label for="image" class="w-full bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-4 flex items-center justify-center cursor-pointer hover:bg-green-50 transition text-slate-400 font-bold text-[10px] uppercase">Görsel Seç</label>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block font-semibold">Açıklama</label>
-                    <textarea id="desc" rows="3" required class="w-full bg-slate-50 border-2 border-slate-50 rounded-2xl p-4 outline-none focus:border-green-500 transition resize-none text-sm font-medium text-slate-600"></textarea>
-                </div>
-
-                <button type="submit" id="submitBtn" class="w-full bg-slate-900 text-white font-black py-5 rounded-2xl hover:bg-green-600 transition shadow-xl tracking-widest flex items-center justify-center gap-3">
-                    <span>ÜRÜNÜ YAYINA AL</span>
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
+        <!-- EKLEME FORMU -->
+        <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl h-fit">
+            <h2 class="text-2xl font-black mb-8"><i class="fa-solid fa-plus text-green-600 mr-2"></i> Yeni Ürün</h2>
+            <form id="pForm" class="space-y-5">
+                <input type="text" id="name" placeholder="Ürün Adı" required class="w-full bg-slate-50 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-green-500 transition">
+                <input type="number" id="price" placeholder="Fiyat" required class="w-full bg-slate-50 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-green-500 transition">
+                <input type="file" id="image" accept="image/*" required class="w-full text-xs">
+                <textarea id="desc" placeholder="Açıklama" required class="w-full bg-slate-50 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-green-500 transition h-24"></textarea>
+                <button type="submit" id="sBtn" class="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-green-600 transition shadow-xl">MAĞAZAYA EKLE</button>
             </form>
-            <div id="status" class="mt-4 text-center text-[10px] font-black hidden p-4 rounded-2xl uppercase tracking-tighter"></div>
+            <div id="stat" class="mt-4 text-center font-bold text-xs"></div>
         </div>
 
-        <!-- Ürün Yönetim Listesi -->
-        <div class="lg:col-span-2 bg-white rounded-[3rem] p-10 shadow-2xl border border-slate-100">
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-2xl font-black text-slate-800 flex items-center gap-3">
-                    <i class="fa-solid fa-boxes-stacked text-green-600"></i> Mağaza Yönetimi
-                </h2>
-                <a href="index.html" class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 hover:text-green-600 transition"><i class="fa-solid fa-house-chimney"></i></a>
-            </div>
-            
-            <div id="admin-product-list" class="grid grid-cols-1 gap-4">
-                <p class="text-slate-400 italic animate-pulse">Railway API bağlantısı kuruluyor...</p>
-            </div>
+        <!-- YÖNETİM LİSTESİ -->
+        <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl">
+            <h2 class="text-2xl font-black mb-8 flex justify-between">
+                <span><i class="fa-solid fa-boxes-stacked text-green-600 mr-2"></i> Envanter</span>
+                <a href="index.html" class="text-slate-400 text-sm"><i class="fa-solid fa-house"></i></a>
+            </h2>
+            <div id="admin-list" class="space-y-4"></div>
         </div>
-
     </div>
 
     <script>
-        // --- AYARLAR ---
-        const IMGBB_KEY = "d74a98b6d9d64daa9724810335c54556"; 
         const API_URL = "https://temizlik-api-production.up.railway.app/api/urunler";
+        const I_KEY = "d74a98b6d9d64daa9724810335c54556";
 
-        window.onload = () => {
-            const pass = prompt("Sistem Güvenliği: Yönetici Şifresini Giriniz:");
-            if(pass !== "admin123") window.location.href = "index.html";
-            loadAdminProducts();
-        };
+        window.onload = () => { if(prompt("Şifre:") !== "admin123") window.location.href="index.html"; loadAdmin(); };
 
-        // Ürünleri Listeleme (MongoDB _id uyumlu)
-        async function loadAdminProducts() {
-            const list = document.getElementById('admin-product-list');
+        async function loadAdmin() {
+            const list = document.getElementById('admin-list');
             try {
                 const res = await fetch(API_URL);
                 const data = await res.json();
                 list.innerHTML = "";
-
-                if(data.length === 0) {
-                    list.innerHTML = `<div class="text-center py-20 border-2 border-dashed border-slate-50 rounded-[3rem] text-slate-300 font-bold italic">Envanter şu an boş.</div>`;
-                    return;
-                }
-
                 data.forEach(p => {
                     list.innerHTML += `
-                        <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[2.5rem] hover:bg-white hover:shadow-xl hover:scale-[1.01] transition duration-300 group border border-transparent hover:border-slate-100">
-                            <div class="flex items-center gap-5">
-                                <img src="${p.resimUrl}" class="w-16 h-16 rounded-2xl object-cover shadow-sm group-hover:rotate-3 transition">
-                                <div>
-                                    <h4 class="font-bold text-slate-800 text-lg tracking-tight">${p.isim}</h4>
-                                    <p class="text-sm font-black text-green-600 italic tracking-tighter">${p.fiyat} TL</p>
-                                </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <div class="flex items-center gap-4">
+                                <img src="${p.resimUrl}" class="w-12 h-12 rounded-xl object-cover">
+                                <div><h4 class="font-bold text-sm">${p.isim}</h4><p class="text-xs text-green-600">${p.fiyat} TL</p></div>
                             </div>
-                            <!-- p._id (başında alt tire var) çünkü MongoDB böyle tutar -->
-                            <button onclick="deleteProduct('${p._id}')" class="w-12 h-12 bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
+                            <button onclick="del('${p._id}')" class="text-red-500 hover:text-red-700 transition px-3"><i class="fa-solid fa-trash"></i></button>
                         </div>`;
                 });
-            } catch (err) {
-                list.innerHTML = "<p class='text-red-500 font-bold'>Hata: Railway API Bağlantısı Başarısız!</p>";
-            }
+            } catch (err) { list.innerHTML = "Bağlantı hatası!"; }
         }
 
-        // Ürün Silme (MongoDB _id kullanarak)
-        async function deleteProduct(id) {
-            if(!confirm("Bu ürün veritabanından kalıcı olarak silinecek. Onaylıyor musunuz?")) return;
-            try {
-                const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-                if(res.ok) {
-                    loadAdminProducts();
-                }
-            } catch (err) {
-                alert("Silme hatası!");
-            }
+        async function del(id) {
+            if(!confirm("Emin misiniz?")) return;
+            await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+            loadAdmin();
         }
 
-        // Ürün Ekleme
-        document.getElementById('productForm').addEventListener('submit', async (e) => {
+        document.getElementById('pForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const status = document.getElementById('status');
-            btn.disabled = true; 
-            status.className = "mt-4 text-center text-[10px] font-black block p-4 rounded-2xl bg-blue-50 text-blue-600";
-            status.innerText = "Görsel sisteme aktarılıyor...";
+            const btn = document.getElementById('sBtn');
+            const stat = document.getElementById('stat');
+            btn.disabled = true; btn.innerText = "YÜKLENİYOR...";
 
             try {
-                // 1. Görseli ImgBB'ye Yükle
-                const imgFile = document.getElementById('image').files[0];
-                const fd = new FormData(); fd.append('image', imgFile);
-                const imgRes = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`, { method: 'POST', body: fd });
-                const imgData = await imgRes.json();
+                const iF = document.getElementById('image').files[0];
+                const fd = new FormData(); fd.append('image', iF);
+                const iRes = await fetch(`https://api.imgbb.com/1/upload?key=${I_KEY}`, { method: 'POST', body: fd });
+                const iD = await iRes.json();
                 
-                status.innerText = "Veritabanı güncelleniyor...";
-
-                // 2. Verileri Railway API'ye Gönder
-                const payload = {
+                const p = {
                     isim: document.getElementById('name').value,
                     fiyat: document.getElementById('price').value,
                     aciklama: document.getElementById('desc').value,
-                    resimUrl: imgData.data.url
+                    resimUrl: iD.data.url
                 };
 
-                const apiRes = await fetch(API_URL, {
+                const aRes = await fetch(API_URL, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify(p)
                 });
 
-                if(apiRes.ok) {
-                    status.className = "mt-4 text-center text-[10px] font-black block p-4 rounded-2xl bg-green-50 text-green-700";
-                    status.innerText = "✓ BAŞARI: Ürün MongoDB Bulutuna Kaydedildi!";
-                    document.getElementById('productForm').reset();
-                    loadAdminProducts();
+                if(aRes.ok) {
+                    stat.innerText = "✓ Ürün başarıyla eklendi!";
+                    document.getElementById('pForm').reset();
+                    loadAdmin();
                 }
-            } catch (err) {
-                status.className = "mt-4 text-center text-[10px] font-black block p-4 rounded-2xl bg-red-50 text-red-700";
-                status.innerText = "❌ HATA: Bağlantı kesildi.";
-            } finally {
-                btn.disabled = false;
-            }
+            } catch (err) { stat.innerText = "Hata oluştu!"; } finally { btn.disabled = false; btn.innerText = "MAĞAZAYA EKLE"; }
         });
     </script>
 </body>
