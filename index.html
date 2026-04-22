@@ -8,70 +8,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfa; }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); }
-        .product-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .product-card:hover { transform: translateY(-10px); shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
+        .product-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #f1f5f9; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05); }
     </style>
 </head>
-<body class="bg-[#fcfdfa] text-slate-900">
+<body>
 
     <!-- Navigasyon -->
     <nav class="fixed w-full z-50 glass-nav border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <i class="fa-solid fa-leaf text-green-600 text-3xl"></i>
-                <span class="text-2xl font-extrabold tracking-tight text-slate-800">Doğa<span class="text-green-600">Temizlik</span></span>
+                <span class="text-2xl font-extrabold tracking-tight text-slate-800 italic">Doğa<span class="text-green-600">Temizlik</span></span>
             </div>
             <div class="flex gap-6 items-center">
-                <a href="#urunler" class="hidden md:block text-slate-600 font-semibold hover:text-green-600 transition">Ürünlerimiz</a>
+                <a href="#urunler" class="hidden md:block text-slate-600 font-semibold hover:text-green-600 transition">Koleksiyon</a>
                 <a href="admin.html" class="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-green-600 transition shadow-lg shadow-slate-200">Panel</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="pt-44 pb-24 px-6">
-        <div class="max-w-5xl mx-auto text-center">
+    <section class="pt-44 pb-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-6 inline-block">Yenilenmiş Formül</span>
             <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-[1.1]">
-                Doğadan Gelen <span class="text-green-600">Saf Temizlik</span> İle Eviniz Nefes Alsın
+                Doğanın Gücüyle <span class="text-green-600 italic">Lekesiz</span> Bir Yaşam
             </h1>
             <p class="text-xl text-slate-500 max-w-2xl mx-auto mb-12">
-                Zararlı kimyasallara veda edin. %100 bitkisel içerikli, çevre dostu ve vegan ürünlerimizle tanışın.
+                Kimyasallardan arınmış, %100 bitkisel içerikli temizlik ürünleriyle evinizi ve dünyayı koruyun.
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#urunler" class="bg-green-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-green-700 transition-all shadow-2xl shadow-green-200">Hemen Keşfedin</a>
-            </div>
+            <a href="#urunler" class="bg-green-600 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-green-700 transition-all shadow-2xl shadow-green-100">Hemen Keşfedin</a>
         </div>
     </section>
 
-    <!-- Ürünler -->
+    <!-- Ürünler Bölümü -->
     <section id="urunler" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
-            <div>
-                <h2 class="text-4xl font-extrabold text-slate-900 italic">Özel Koleksiyon</h2>
-                <div class="h-1.5 w-20 bg-green-600 mt-2 rounded-full"></div>
-            </div>
-        </div>
+        <h2 class="text-3xl font-black text-slate-900 mb-12">Öne Çıkanlar</h2>
 
-        <!-- Yükleniyor Ekranı -->
+        <!-- Yükleniyor -->
         <div id="loading" class="text-center py-20">
-            <div class="inline-block animate-spin rounded-full h-12 w-12 border-[4px] border-slate-200 border-t-green-600 mb-4"></div>
-            <p class="text-slate-400 font-medium">Doğal ürünler hazırlanıyor...</p>
+            <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-slate-200 border-t-green-600 mb-4"></div>
+            <p class="text-slate-400 font-semibold italic">Ürünler yükleniyor...</p>
         </div>
 
-        <!-- Ürün Kartları -->
         <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- API verileri buraya akar -->
+            <!-- Veriler API'den gelecek -->
         </div>
     </section>
 
-    <footer class="bg-white border-t border-slate-100 py-16 px-6 text-center">
-        <div class="flex items-center justify-center gap-2 mb-4">
-            <i class="fa-solid fa-leaf text-green-600 text-2xl"></i>
-            <span class="text-xl font-bold italic underline decoration-green-300">Doğa Temizlik</span>
-        </div>
-        <p class="text-slate-400 text-sm font-medium">© 2026. Tüm doğal hakları saklıdır.</p>
+    <footer class="bg-white border-t border-slate-100 py-16 text-center">
+        <p class="text-slate-400 text-sm font-bold">© 2026 Doğa Temizlik Ürünleri. Tüm Hakları Saklıdır.</p>
     </footer>
 
     <script>
@@ -85,31 +74,31 @@
                 document.getElementById('loading').style.display = 'none';
 
                 if (data.length === 0) {
-                    container.innerHTML = `<div class="col-span-full bg-white p-16 rounded-[3rem] border-2 border-dashed border-slate-100 text-center text-slate-400 text-xl italic">Henüz ürün eklenmemiş.</div>`;
+                    container.innerHTML = `<p class="col-span-full text-center text-slate-400 italic">Henüz ürün eklenmemiş.</p>`;
                     return;
                 }
 
                 data.forEach(p => {
                     container.innerHTML += `
-                        <div class="product-card bg-white rounded-[2.5rem] overflow-hidden border border-slate-50 shadow-sm group">
+                        <div class="product-card bg-white rounded-[2.5rem] overflow-hidden group">
                             <div class="h-80 overflow-hidden relative">
-                                <img src="${p.resimUrl}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="${p.isim}">
-                                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter text-green-700 shadow-sm">Doğa Dostu</div>
+                                <img src="${p.resimUrl}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                                <div class="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-[10px] font-black uppercase text-green-700 tracking-tighter shadow-sm italic">Organik Altyapı</div>
                             </div>
                             <div class="p-8">
                                 <h3 class="text-2xl font-bold text-slate-800 mb-3">${p.isim}</h3>
-                                <p class="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-2">${p.aciklama}</p>
+                                <p class="text-slate-500 text-sm mb-8 line-clamp-2 italic font-medium">"${p.aciklama}"</p>
                                 <div class="flex items-center justify-between">
-                                    <span class="text-3xl font-black text-slate-900">${p.fiyat} <span class="text-sm font-bold text-slate-400 ml-1">TL</span></span>
-                                    <button class="bg-green-600 text-white w-14 h-14 rounded-2xl flex items-center justify-center hover:bg-slate-900 transition-all shadow-lg shadow-green-100">
-                                        <i class="fa-solid fa-plus text-xl"></i>
+                                    <span class="text-3xl font-black text-slate-900">${p.fiyat} <span class="text-sm text-slate-400">TL</span></span>
+                                    <button class="bg-slate-900 text-white p-4 rounded-2xl hover:bg-green-600 transition shadow-lg">
+                                        <i class="fa-solid fa-cart-shopping"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>`;
                 });
             } catch (err) {
-                document.getElementById('loading').innerHTML = `<p class="text-red-400">Sunucu uyanırken bir hata oluştu, lütfen sayfayı yenileyin.</p>`;
+                document.getElementById('loading').innerHTML = `<p class="text-red-400">API şu an uyanıyor, lütfen biraz bekleyip sayfayı yenileyin.</p>`;
             }
         }
         window.onload = loadProducts;
